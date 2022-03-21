@@ -6,7 +6,7 @@ const connect = async () => {
     const channel = await connection.createChannel();
     const result = await channel.assertQueue("jobs");
     console.log("Waiting for msg...");
-    channel.consume("jobs", (msg) => {
+    channel.consume("job", (msg) => {
       const incomingMsg = JSON.parse(msg.content.toString());
       console.log(incomingMsg);
       channel.ack(msg);
